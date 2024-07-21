@@ -20,11 +20,17 @@ namespace ConsoleAppXml
                                     - Type the answer");
                 string question = Console.ReadLine();
                 string answer = Console.ReadLine();
-                XElement element = new XElement("item1",
-                        new XElement("question", question),
-                        new XElement("answer", answer));
-                doc.;
-                var node = xmlService.GetNodeByName("Data.Item1.answer");
+                XmlElement item = doc.CreateElement("Item1");
+                XmlElement question1 = doc.CreateElement("Question");
+                question1.InnerText = question;
+                XmlElement answer1 = doc.CreateElement("Answer");
+                answer1.InnerText = answer;
+                item.AppendChild(question1);
+                item.AppendChild(answer1);
+                doc.DocumentElement.AppendChild(item);
+                doc.Save("data.xml");
+
+                var node = xmlService.GetNodeByName("Data.Item1");
                 Console.WriteLine(node.InnerText);
 
 

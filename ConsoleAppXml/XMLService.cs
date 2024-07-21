@@ -35,7 +35,7 @@ namespace ConsoleAppXml
         public XmlNode? GetNodeByName(string nodePath)
         {
             // Replace dot notation with XPath separator
-            string xPath = "//" + nodePath.Replace('.', '/');
+            string xPath = "/" + nodePath.Replace('.', '/');
 
             // Query the XML document using the constructed XPath
             return activeDoc.SelectSingleNode(xPath);
